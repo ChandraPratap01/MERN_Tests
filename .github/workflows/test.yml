@@ -25,7 +25,7 @@ jobs:
               run: npm install
 
             - name: Copy .envexample to env
-              run: cp ./Integration_Test/.env.example ./Integration_Test/.env
+              run: /.env.example /.env
 
             - name: Run Integreation Test
               run: npm run Integration_Test
