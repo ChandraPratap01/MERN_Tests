@@ -1,0 +1,45 @@
+name: CI/CD For Test
+on:
+    push:
+        branches:
+            - main
+    pull_request:
+        branches:
+            - main
+jobs:
+    test:
+        runs-on: ubuntu-latest
+
+        steps:
+
+
+            - name: Clone The Repo
+              uses: actions/checkout@v5
+
+            - name: Set Up Nodejs
+              uses: actions/setup-node@v4
+              with:
+                node-version: 18
+
+            - name: Installing Dependencies
+              run: npm install
+
+            - name: Copy .envexample to env
+              run: cp ./Integration_Test/.env.example ./Integration_Test/.env
+
+            - name: Run Integreation Test
+              run: npm run Integration_Test
+
+
+
+
+
+        
+            
+
+        
+       
+    
+
+
+
