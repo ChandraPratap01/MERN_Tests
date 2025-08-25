@@ -24,3 +24,26 @@ return res.json({
     id:value.id
 })
 })
+
+app.post("/product",async(req,res)=>{
+    const a=req.body.a;
+    const b=req.body.b;
+    if(a>1000000 || b>1000000){
+        return res.status(400).json({
+            message:"The number is too long"
+        })
+    }
+    const answer=a*b;
+    const value=await prismaClient.request.create({
+        data:{
+            a:a,
+            b:b,
+            answer:answer,
+            type:"MUL"
+        }
+    })
+    return res.json({
+        answer,
+        id:value.id
+    })
+})
